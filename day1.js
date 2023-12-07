@@ -1,9 +1,25 @@
 const fs = require("fs");
 
+const digits = {
+  one: "1",
+  two: "2",
+  three: "3",
+  four: "4",
+  five: "5",
+  six: "6",
+  seven: "7",
+  eight: "8",
+  nine: "9",
+};
+
 var findFirstDigit = function (str) {
   for (var i = 0; i < str.length; i++) {
     if (!isNaN(parseInt(str[i]))) {
       return str[i];
+    } else if (Object.keys(digits).find((s) => str.startsWith(s, i))) {
+      var result =
+        digits[Object.keys(digits).find((s) => str.startsWith(s, i))];
+      return result;
     }
   }
 };
@@ -12,6 +28,10 @@ var findLastDigit = function (str) {
   for (var i = str.length - 1; i >= 0; i--) {
     if (!isNaN(parseInt(str[i]))) {
       return str[i];
+    } else if (Object.keys(digits).find((s) => str.startsWith(s, i))) {
+      var result =
+        digits[Object.keys(digits).find((s) => str.startsWith(s, i))];
+      return result;
     }
   }
 };
